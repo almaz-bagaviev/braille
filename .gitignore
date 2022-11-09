@@ -1,0 +1,10 @@
+#Visual Studio Files
+
+.vs/
+.vscode/
+bin/
+obj/
+
+#Xamarin Files
+BrailleApp/BrailleApp.Android
+BrailleApp/BrailleApp.IOS
