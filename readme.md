@@ -1,25 +1,5 @@
 ![](logo.png)
 
-<style>
-    p, li {
-
-        font-family: "Trebuchet MS"
-    }
-
-    .container {
-        background-color: powderblue;
-        padding: 10px;
-        margin-bottom: 20px;
-    }
-
-    h5 {
-        background-color: bisque;
-    }
-
-    .list {
-        margin-bottom: 25px;
-    }
-</style>
 
 <h3>Азбука Брайля</h3>
 <p>Приложение предназначено для незрячих или плохо-видящих людей и их близких, которое построено с использованием тактильного и клавишного шрифта.</p>
@@ -67,6 +47,8 @@
         <li>Точка <b>6</b> – клавиша <b>3</b>.</li>
 </div>
 
+
+
 ![](dots.svg)
 
 <h5>Сборка:</h5>
@@ -74,5 +56,5 @@
 1. Клонируйте Репозиторий или скачайте ZIP-файл.
 2. В папке найдите и откройте .sln файл.
 3. Соберите. В Visual Studioкомбинация клавиш: <b>>Ctrl + Shift + B</b> .
-4. В папке <b>\bin\Debug\net6.0-windows</b> появится .exe Приложение.
+4. В папке <b>\bin\Debug\net6.0-windows</b> появится <b>.exe</b> Приложение.
 5. <b>Запустите.</b>
