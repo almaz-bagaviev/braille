@@ -105,7 +105,6 @@ public static class ABC
             else if (t1 && t2 && !t3 && !t4 && !t5 && t6) { symbol = "("; dots = 126; }
             else if (!t1 && !t2 && t3 && t4 && t5 && !t6) { symbol = ")"; dots = 345; }
             else if (!t1 && t2 && t3 && !t4 && t5 && t6) { symbol = "()"; dots = 2356; }
-            else if (!t1 && !t2 && t3 && t4 && t5 && t6) { symbol = "startNumbers"; dots = 3456; }
             else { symbol = "*"; dots = 0; };
         }
         return (symbol, dots.ToString());
