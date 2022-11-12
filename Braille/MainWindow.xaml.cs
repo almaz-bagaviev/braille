@@ -12,6 +12,7 @@ public partial class MainWindow : Window
     List<Button> buttons;
     List<TextBlock> numbers;
     ViewModel model;
+    string connectionString = "YourConnectionString";
 
     public MainWindow()
     {
@@ -21,6 +22,7 @@ public partial class MainWindow : Window
         numbers = new() { numberBlock1, numberBlock2, numberBlock3, numberBlock4, numberBlock5, numberBlock6 };
 
         model = new(buttons, numbers);
+        model.ConnectionDb(connectionString);
 
         KeyUp += MainWindow_KeyUp;
     }

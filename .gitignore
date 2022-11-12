@@ -8,3 +8,7 @@ obj/
 #Xamarin Files
 BrailleApp/BrailleApp.Android
 BrailleApp/BrailleApp.IOS
+
+#DataBase
+*mdf
+*ldf

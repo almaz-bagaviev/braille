@@ -11,6 +11,7 @@ using System.Media;
 using Braille.FilesModel;
 using Braille.FullTextModel;
 using System.Windows.Input;
+using Braille.MainDataBase;
 
 namespace Braille.Model;
 
@@ -29,6 +30,7 @@ public class ViewModel
     int t5ClickCount; // needs for Change Alphabet params
 
     Alphabet alphabet;
+    BrailleDB dB;
 
     public static StringBuilder EnteredText;
     UnionSymbols unionSymbols;
@@ -38,7 +40,6 @@ public class ViewModel
     {
         this.ClickButtons = clickButtons;
         this.Blocks = blocks;
-
         InitialIsClickBools();
         SystemSounds.Beep.Play();
 
@@ -49,6 +50,15 @@ public class ViewModel
         EnteredText = new();
         unionSymbols = new(EnteredText);
         alphabet = Alphabet.Rus;
+    }
+
+    public void ConnectionDb(string connectionString)
+    {
+        dB = new BrailleDB(connectionString);
+    }
+    public void ConnectionDb()
+    {
+        dB = new BrailleDB();
     }
 
     private void ClickCountsIsDefault()
@@ -79,8 +89,11 @@ public class ViewModel
 
         CloseWindow.ClearText();
 
-        string symbol = ConvertToBraille();
-        unionSymbols.AddSymbolToText(symbol);
+        var symbol = ConvertToBraille();
+        unionSymbols.AddSymbolToText(symbol.Sym);
+
+        if(symbol.Sym!="*") dB.AddToDB(symbol.Sym, symbol.Dots);
+        
         ChangeAlphabet();
         ButtonsClickFalse();
         ClickCountsIsDefault();
@@ -157,11 +170,11 @@ public class ViewModel
         }
     }
 
-    private string ConvertToBraille()
+    private (string Sym, string Dots) ConvertToBraille()
     {
         var result = ABC.ConvertToBraille(alphabet, IsClickToButtons[0], IsClickToButtons[1], IsClickToButtons[2], IsClickToButtons[3], IsClickToButtons[4], IsClickToButtons[5]);
         Debug.WriteLine($"{result.Symbol} {result.Dots}");
-        return result.Symbol;
+        return result;
     }
 
     private void ChangeTextBlockForeground(TextBlock numberTextBlock)
