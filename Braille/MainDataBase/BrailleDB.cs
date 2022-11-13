@@ -27,7 +27,7 @@ public class BrailleDB
     {
         try
         {
-            string sql = @"insert into Braille values('" + symbol + "', " + dots + ")";
+            string sql = @"insert into Braille values(N'" + symbol + "', " + dots + ")";
             SqlCommand command = new SqlCommand(sql, connection);
             command.ExecuteNonQuery();
             Debug.WriteLine($"Values added to Db {symbol} {dots}");
