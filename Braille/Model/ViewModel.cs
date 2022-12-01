@@ -12,6 +12,7 @@ using Braille.FilesModel;
 using Braille.FullTextModel;
 using System.Windows.Input;
 using Braille.MainDataBase;
+using Braille.MainModel;
 
 namespace Braille.Model;
 
@@ -89,10 +90,10 @@ public class ViewModel
 
         CloseWindow.ClearText();
 
-        var symbol = ConvertToBraille();
-        unionSymbols.AddSymbolToText(symbol.Sym);
+        ABC abc = ConvertToBraille();
+        unionSymbols.AddSymbolToText(abc.Symbol);
 
-        if(symbol.Sym!="*") dB.AddToDB(symbol.Sym, symbol.Dots);
+        if(abc.Symbol != "*") dB.AddToDB(abc.Symbol, abc.Dots.ToString());
         
         ChangeAlphabet();
         ButtonsClickFalse();
@@ -170,9 +171,9 @@ public class ViewModel
         }
     }
 
-    private (string Sym, string Dots) ConvertToBraille()
+    private ABC ConvertToBraille()
     {
-        var result = ABC.ConvertToBraille(alphabet, IsClickToButtons[0], IsClickToButtons[1], IsClickToButtons[2], IsClickToButtons[3], IsClickToButtons[4], IsClickToButtons[5]);
+        ABC result = ABCModel.ConvertToBraille(alphabet, IsClickToButtons[0], IsClickToButtons[1], IsClickToButtons[2], IsClickToButtons[3], IsClickToButtons[4], IsClickToButtons[5]);
         Debug.WriteLine($"{result.Symbol} {result.Dots}");
         return result;
     }
